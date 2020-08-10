@@ -31,29 +31,21 @@ def complexConj(a):
 
     return entera,comple
 
-def complexConver(a):
+def polarCartesiano(a):
+    #Los angulos estan en grados
+    r = a[0]
+    ang = radGrados(a[1])
+    v1 = r*(math.cos(ang))
+    v2 = r*(math.sin(ang))
+    return (v1,v2)
 
-    mod=complexMod(a)
-    tetha=math.atan(a[1]/a[0])
-    real= math.cos(tetha)
-    comple= math.sin(tetha)
+def cartesianoPolar(a):
+    v1 = (a[0]**2 + a[1]**2)**(1/2)
+    v2 = gradRadi(math.atan2(a[1],abs(a[0])))
+    return(v1,v2)
 
-    return mod,real,comple
 def complexArg(a):
+    v1 = math.atan2(a[1],a[0])
+    return v1
 
-    if(a[0]==0 ):
-        arg=0
-    elif(a[0]<0 and a[1]>0):
-        arg= math.atan(a[1]/a[0])
-        arg=arg+(math.pi /2)
-    elif(a[0]<0 and a[1]<0):
-        arg= math.atan(a[1]/a[0])
-        arg=arg-(math.pi /2)
-    return arg
-
-def main():
-    a=(10,5)
-    b=(2,5)
-    print(complexDiv(a,b))
-main()
 
