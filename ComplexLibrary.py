@@ -48,4 +48,10 @@ def complexArg(a):
     v1 = math.atan2(a[1],a[0])
     return v1
 
+def radGrados(num):
+    return (num/180)*math.pi
+
+def gradRadi(num):
+    return (num*180)/math.pi
+
 
