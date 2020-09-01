@@ -65,11 +65,6 @@ class pruebaComplejos(unittest.TestCase):
         self.assertEqual(ans1,[(-1,1),(-2,-3),(1,-3)])
         self.assertEqual(ans2,[(-1,-2),(3,-3),(1,-3)])
         
-    def test_multiplicacionVectores(self):
-        ans1 = ComplexLibrary.matrixProduct([(1,2),(3,4),(1,5)],(0,0))
-        ans2 = ComplexLibrary.matrixProduct((1,1),[(1,2),(3,4),(1,5)])
-        self.assertEqual(ans1,[(0,0),(0,0),(0,0)])
-        self.assertEqual(ans2,[(-1,3),(-1,7),(-4,6)])
 
     def test_sumaMatrices(self):
         ans1 = ComplexLibrary.sumaMatrices([[(1,1),(2,-3)],[(4,2),(2,4)]],[[(1,0),(1,0)],[(1,0),(1,0)]])
@@ -89,12 +84,12 @@ class pruebaComplejos(unittest.TestCase):
         self.assertEqual(ans1,[[(0,2),(5,-1)],[(2,6),(-2,6)]])
         self.assertEqual(ans2,[[(-1,5),(13,0)],[(2,16),(-8,14)]])
 
-    def test_traspuesta(self):
+    def test_transpuesta(self):
         ans1 = ComplexLibrary.transpuestaMatriz([[(1,1),(2,-3)],[(4,2),(2,4)]])
         ans2 = ComplexLibrary.transpuestaMatriz([[(1,1),(2,-3),(5,4)],[(4,2),(2,4),(4,5)]])
         self.assertEqual(ans1,[[(1,1),(4,2)],[(2,-3),(2,4)]])
         self.assertEqual(ans2,[[(1,1),(4,2)],[(2,-3),(2,4)],[(5,4),(4,5)]])
-
+        
     def test_conjugadoMatriz(self):
         ans1 = ComplexLibrary.conjugadoMatriz([[(1,2),(2,1)],[(1,-2),(2,-3)],[(3,4),(3,-1)]])
         ans2 = ComplexLibrary.conjugadoMatriz([[(1,1),(2,2),(1,1)],[(2,2),(3,-3),(2,3)]])
@@ -107,11 +102,6 @@ class pruebaComplejos(unittest.TestCase):
         self.assertEqual(ans1,[[(1,-1),(4,-2)],[(2,3),(2,-4)]])
         self.assertEqual(ans2,[[(1,-1),(4,-2),(1,0)],[(2,-3),(1,-4),(3,4)]])
 
-    def test_productoVectorMatriz(self):
-        ans1 = ComplexLibrary.multiply([(1,1),(2,3)],[[(1,2),(2,1)],[(3,3),(1,-2)]])
-        ans2 = ComplexLibrary.multiply([(0,0),(0,0)],[[(1,2),(2,1)],[(3,3),(1,-2)]])
-        self.assertEqual(ans1,[(0,11),(8,5)])
-        self.assertEqual(ans2,[(0,0),(0,0)])
 
     def test_productoInternoVectores(self):
         ans1 = ComplexLibrary.innerProduct([(1,0),(0,1),(1,-3)],[(2,1),(0,1),(2,0)])
@@ -131,7 +121,7 @@ class pruebaComplejos(unittest.TestCase):
         self.assertEqual(ans2,5.477225575051661)
         
 
-    
+
     def test_esUnitaria(self):
         self.assertFalse(ComplexLibrary.esUnitaria([[(1,1),(0,0)],[(0,0),(1,-1)]]))
         self.assertFalse(ComplexLibrary.esUnitaria([[(-1,0),(0,-1)],[(0,1),(1,0)]]))
@@ -149,10 +139,5 @@ class pruebaComplejos(unittest.TestCase):
         self.assertEqual(ans2,[(-5,3),(-3,3),(9,-2),(6,-3),(19,9),(15,3)])
         
 
-    def test_productoTensorMatrices(self):
-        ans1 = ComplexLibrary.productoTensorMatrices([[(1,0),(2,0)],[(0,0),(1,0)]],[[(3,0),(2,0)],[(-1,0),(0,0)]])
-        ans2 = ComplexLibrary.productoTensorMatrices([(0,0),(0,0)],[[(1,0),(2,0)],[(3,0),(2,0)],[(1,1),(2,2)]])
-        self.assertEqual(ans1,[[(3,0),(2,0),(6,0),(4,0)],[(-1,0),(0,0),(-2,0),(0,0)],[(0,0),(0,0),(3,0),(2,0)],[(0,0),(0,0),(-1,0),(0,0)]])
-        self.assertEqual(ans2,[[(0,0),(0,0),(0,0),(0,0)],[(0,0),(0,0),(0,0),(0,0)],[(0,0),(0,0),(0,0),(0,0)]])
 if __name__ == "__main__":
     unittest.main()

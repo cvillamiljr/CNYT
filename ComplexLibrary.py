@@ -87,22 +87,14 @@ def escalarXComplejo(e,v):
     return ans
 def sumaMatrices(a,b):
     ans=[[0]*len(a) for n in range(len(a))]
-    if(len(a)!=len(b)):
-        return "Las dimensiones de los vectores no son iguales"
+    if(len(a)!=len(b) and len(a[0])==len(b[0])):
+        return "Las dimensiones de las matrices no son iguales"
     else:
         for i in range(len(a)):
             for j in range(len(a[i])):
                 ans[i][j]=complexSum(a[i][j],b[i][j])
     return ans
 
-def multiply(v, G):
-    ans = []
-    for i in range(len(G[0])): 
-        total = 0
-        for j in range(len(v)): 
-            total += v[j] * G[j][i]
-        ans.append(total)
-    return ans
 
 def inversaMatriz(a):
     ans=[[0]*len(a) for n in range(len(a))]
@@ -125,7 +117,7 @@ def transpuestaMatriz(a):
     return ans
 
 def conjugadoMatriz(a):
-    ans=[[0]*len(a) for n in range(len(a))]
+    ans=[[0]*len(a[0]) for n in range(len(a))]
     for i in range(len(a)):
         for j in range(len(a[i])):
             ans[i][j]=complexConj(a[i][j])
@@ -133,7 +125,7 @@ def conjugadoMatriz(a):
 
 def dagaMatriz(a):
     ans=transpuestaMatriz(a)
-    ans=conjugadoMatriz(a)
+    ans=conjugadoMatriz(ans)
     return ans
 
 def matrixProduct(a,b):
@@ -143,16 +135,22 @@ def matrixProduct(a,b):
     if(len(a[0])!=len(b)):
         return "No se pueden multiplicar estas matrices"
     else:
-        for i in range(len(a)):
-            for j in range(len(b[0])):
-                for k in range(len(b)):
-                    ans[i][j] += a[i][k] * b[k][j]
+        r=transpuestaMatriz(b)
 
+        for i in range(len(a)):
+            for j in range(len(r)):
+                temp=(0,0)
+                m=(0,0)
+                for k in range(len(a[0])):
+                    temp=complexProduct(a[i][k],r[j][k])
+                    m=complexSum(temp,m)
+                ans[i][j]=m
     return ans
 
 def conjugadoVector(a):
-    ans = [0]*len(a)
+    ans=[0*len(a) for n in range(len(a))]
     for i in range(len(a)):
+        
         ans[i] = complexConj(a[i])
     return ans 
 
